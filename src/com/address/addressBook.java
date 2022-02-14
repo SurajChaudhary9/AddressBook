@@ -109,8 +109,8 @@ public class addressBook {
 	}
 
 	public static void main(String[] args) {
-		addressBook Address = new addressBook("Suraj", "Chaudhary", "Pune", "PimpriChinchwad", "411062",
-				"Andhra pradesh", "7709911506", "surajchaudhary0707@gmail.com");
+		addressBook Address = new addressBook("Suraj", "Chaudhary", "Pune", "PimpriChinchwad", "411062", "Maharashtra",
+				"7709911506", "surajchaudhary0707@gmail.com");
 		Address.forString();
 		addressBook.displayContacts();
 	}
