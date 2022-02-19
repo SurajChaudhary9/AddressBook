@@ -1,102 +1,58 @@
 package com.address;
-/*Ability to create a Contacts in Address
-Book with first and last names, address,
-city, state, zip, phone number and
-email...
+/*Ability to add a new Contact to Address Book 
+ * - Use Console to add person details from AddressBookMain class
+- Use Object Oriented Concepts to manage
+relationship between AddressBook and Contact
+Person
  */
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 class addressBook {
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String city;
-	private String state;
-	private String zip;
-	private String phoneNumber;
-	private String email;
+	static Scanner scanner = new Scanner(System.in);
+	ArrayList<Contacts> person;
 
-	// constructor addressbook
-	public addressBook(String firstName, String lastName, String address, String city, String state, String zip,
-			String phoneNumber, String email) {
-		setFirstName(firstName);
-		setLastName(lastName);
-		setAddress(address);
-		setCity(city);
-		setState(state);
-		setZip(zip);
-		setPhoneNumber(phoneNumber);
-		setEmail(email);
+	// constructor
+	public adressBook() {
+		person = new ArrayList<Contacts>();
 	}
 
-	// getters setters for parameters
+	// add new person record to array list after taking input
 
-	public String getFirstName() {
-		return firstName;
-	}
+	public void addPerson() {
+		System.out.println("Enter the First Name");
+		String firstName = scanner.next();
+		System.out.println("Enter the Last Name");
+		String lastName = scanner.next();
+		System.out.println("Enter the Address");
+		String address = scanner.next();
+		System.out.println("Enter the City");
+		String city = scanner.next();
+		System.out.println("Enter the State");
+		String state = scanner.next();
+		System.out.println("Enter the Zip Code");
+		String zip = scanner.next();
+		System.out.println("Enter the PhoneNumber");
+		String phoneNumber = scanner.next();
+		System.out.println("Enter the Email");
+		String emailId = scanner.next();
+		// constructor creation
+		Contacts contacts = new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, emailId);
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+		// adding the above list to to Contacts array list
+		person.add(contacts);
 
-	public String getLastName() {
-		return lastName;
-	}
+		// printing contacts data inside 
+		System.out.println(contacts);
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+	}// end of addPerson method
 
-	public String getAddress() {
-		return address;
+	public static void main(String[] args) {
+		System.out.println("Welcome to Address Book Program in AddressBookMain class");
 	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getZip() {
-		return zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String toString() {
-		return "Contacts [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city
-				+ ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
-	}
+	addressBook ab = new addressBook();
+	ab.addPerson();
+}// end of main
 
 }/// end of class
