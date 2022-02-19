@@ -1,9 +1,6 @@
 package com.address;
-/*Ability to add a new Contact to Address Book 
- * - Use Console to add person details from AddressBookMain class
-- Use Object Oriented Concepts to manage
-relationship between AddressBook and Contact
-Person
+/*Ability to edit existing contact person using their name
+ * Using console to edit person details
  */
 
 import java.util.ArrayList;
@@ -14,13 +11,13 @@ class addressBook {
 	ArrayList<Contacts> person;
 
 	// constructor
-	public adressBook() {
+	public addressBook() {
 		person = new ArrayList<Contacts>();
 	}
 
 	// add new person record to array list after taking input
 
-	public void addPerson() {
+	public Contacts addPerson() {
 		System.out.println("Enter the First Name");
 		String firstName = scanner.next();
 		System.out.println("Enter the Last Name");
@@ -31,28 +28,49 @@ class addressBook {
 		String city = scanner.next();
 		System.out.println("Enter the State");
 		String state = scanner.next();
-		System.out.println("Enter the Zip Code");
+		System.out.println("Enter the Zip");
 		String zip = scanner.next();
 		System.out.println("Enter the PhoneNumber");
 		String phoneNumber = scanner.next();
 		System.out.println("Enter the Email");
 		String emailId = scanner.next();
-		// constructor creation
+		// creating constructor
 		Contacts contacts = new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, emailId);
-
 		// adding the above list to to Contacts array list
 		person.add(contacts);
-
-		// printing contacts data inside 
+		// printing the contacts object data inside
 		System.out.println(contacts);
+
+		return contacts;
 
 	}// end of addPerson method
 
+	// Editing contact details using person's name
+	public void editPerson() {
+		System.out.println("Enter name to Edit");
+		String s = scanner.next();
+		addressBook ab = new addressBook();
+
+		for (int i = 0; i < person.size(); i++) {
+			Contacts p = (Contacts) person.get(i);
+			if (s.equals(p.getFirstName())) {
+				System.out.println(p);
+				p = ab.addPerson();/// calling add person to replace initial i/p
+
+				for (int j = 0; j < person.size(); j++) {
+					person.set(j, p);
+				}
+
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program in AddressBookMain class");
-	}
-	addressBook ab = new addressBook();
-	ab.addPerson();
-}// end of main
+		addressBook ab = new addressBook();
+		ab.addPerson();
+		ab.editPerson();
 
-}/// end of class
+	}// main end
+
+}/// class end
